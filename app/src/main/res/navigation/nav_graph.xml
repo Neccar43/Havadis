@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.BookmarkFragment"
+        android:label="fragment_bookmark"
+        tools:layout="@layout/fragment_bookmark" >
+        <action
+            android:id="@+id/action_bookmarkFragment2_to_previewFragment"
+            app:destination="@id/previewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment2_to_previewFragment"
+            app:destination="@id/previewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsReadingFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.NewsReadingFragment"
+        android:label="fragment_news_reading"
+        tools:layout="@layout/fragment_news_reading" >
+        <action
+            android:id="@+id/action_newsReadingFragment_to_previewFragment"
+            app:destination="@id/previewFragment" />
+        <argument
+            android:name="url"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/previewFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview" >
+        <action
+            android:id="@+id/action_previewFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_bookmarkFragment2"
+            app:destination="@id/bookmarkFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_searchFragment2"
+            app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_previewFragment_to_newsReadingFragment"
+            app:destination="@id/newsReadingFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment2_to_previewFragment"
+            app:destination="@id/previewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
