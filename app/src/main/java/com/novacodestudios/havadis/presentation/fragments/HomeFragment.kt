@@ -41,6 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
             viewModel.setSelectedArticle(article)
             HomeFragmentDirections.actionHomeFragment2ToPreviewFragment()
         })
+
     override fun inflateBinding(
         inflater: LayoutInflater,
         container: ViewGroup?
@@ -52,7 +53,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         binding.rvHome.layoutManager = LinearLayoutManager(requireContext())
         getWifiOnly()
         setAdapter()
-        collectLast(viewModel.topHeadLineNews.asFlow(), ::setArticles)
+        // TODO: tek seferde çok fazla istek atıyor bunu düzelt
+        lifecycleScope.launch {
+            viewModel.getCountry().collectLatest { country ->
+                collectLast(viewModel.getTopHeadlineNews(country = country).asFlow(), ::setArticles)
+            }
+        }
+
 
     }
 
@@ -105,11 +112,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
     }
 
-    private fun retry() {
 
-    }
-
-    private fun getWifiOnly(){
+    private fun getWifiOnly() {
         lifecycleScope.launch {
             viewModel.getWifiOnly().collectLatest { onlyWifiSelected ->
                 adapter.onlyWifiSelected = onlyWifiSelected
@@ -117,7 +121,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         }
 
     }
-    companion object{
+
+    companion object {
         private const val TAG = "Home Fragment"
     }
 }

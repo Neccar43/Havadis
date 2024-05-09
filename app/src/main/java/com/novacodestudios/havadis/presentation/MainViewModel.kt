@@ -18,9 +18,11 @@ import com.novacodestudios.havadis.domain.preferences.UserPreferences
 import com.novacodestudios.havadis.domain.repository.NewsRepository
 import com.novacodestudios.havadis.util.Category
 import com.novacodestudios.havadis.util.Country
+import com.novacodestudios.havadis.util.Language
 import com.novacodestudios.havadis.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,28 +41,32 @@ class MainViewModel @Inject constructor(
         get() = _searchNews
 
 
-    // TODO: Bu kısmı datastoredan çek
-    val topHeadLineNews: LiveData<PagingData<Article>> =
-        repository
-            .getTopHeadLinesWithPaging(
-                options =
-                TopHeadlinesOptions(
-                    country = Country.TURKEY,
-                    category = null, // TODO: Kategori seçmeyi ekle
-                    sources = null,
-                    searchQuery = null, // TODO: Arama özelliği ekle
-                )
+
+
+     fun getTopHeadlineNews(
+         country: Country?=null,
+         category: Category?=null,
+         sources: String?=null,
+         query: String?=null
+     ): LiveData<PagingData<Article>> =
+        repository.getTopHeadLinesWithPaging(
+            options =
+            TopHeadlinesOptions(
+                country = country,
+                category = category, // TODO: Kategori seçmeyi ekle
+                sources = sources,
+                searchQuery = query, // TODO: Arama özelliği ekle
             )
-            .cachedIn(viewModelScope)
+        ).cachedIn(viewModelScope)
 
 
-    fun searchNews(query: String = "") = repository
+    fun searchNews(query: String = "",sources:String?=null,domains:String?=null,language: Language?=null) = repository
         .searchNews(
             options =
             NewsSearchOptions(
-                sources = null,
-                domains =null ,
-                language = null,
+                sources = sources,
+                domains = domains,
+                language = language,
                 searchQuery = query,
             )
         )
@@ -130,6 +136,22 @@ class MainViewModel @Inject constructor(
     }
 
     fun getShowNotification() = preferences.getShowNotification
+
+    fun getCountry() = preferences.getCountry
+
+    fun setCountry(country: Country) {
+        viewModelScope.launch {
+            preferences.setCountry(country)
+        }
+    }
+
+    fun getLanguage() = preferences.getLanguage
+
+    fun setLanguage(language: Language) {
+        viewModelScope.launch {
+            preferences.setLanguage(language)
+        }
+    }
 
 
 }
