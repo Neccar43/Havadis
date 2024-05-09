@@ -53,7 +53,7 @@ class MainViewModel @Inject constructor(
             options =
             TopHeadlinesOptions(
                 country = country,
-                category = category, // TODO: Kategori seçmeyi ekle
+                category = category,
                 sources = sources,
                 searchQuery = query, // TODO: Arama özelliği ekle
             )

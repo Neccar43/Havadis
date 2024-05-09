@@ -16,13 +16,19 @@ enum class SearchIn {
 }
 
 enum class Category(val value: String) {
+    GENERAL("general"),
     BUSINESS("business"),
     ENTERTAINMENT("entertainment"),
-    GENERAL("general"),
     HEALTH("health"),
     SCIENCE("science"),
     SPORTS("sports"),
-    TECHNOLOGY("technology"),
+    TECHNOLOGY("technology");
+
+    companion object {
+        fun fromCategoryValue(value: String?): Category? {
+            return Category.entries.find { it.value == value }
+        }
+    }
 }
 
 enum class Country(val countryCode: String) {

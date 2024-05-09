@@ -34,17 +34,7 @@ class NewsViewHolder(
     fun bind(article: Article) {
         binding.apply {
             // TODO: Burada img url nin null gelmesi durumunda place holder göster
-            ivNewsRow.loadImageWithWifiPreference(article.urlToImage,binding.ivNewsRow.context,onlyWifiSelected) /*{
-                listener(
-                    onError = { request, result ->
-                        Log.e(
-                            TAG,
-                            "coil error: ${result.throwable} image url:${article.urlToImage} article:$article"
-                        )
-
-                    }
-                )
-            }*/
+            ivNewsRow.loadImageWithWifiPreference(article.urlToImage,binding.ivNewsRow.context,onlyWifiSelected)
             tvRowTitle.text = article.title
             tvRowSource.text = article.source.name
             tvRowPublishDate.text = article.publishedAt

@@ -20,60 +20,31 @@
             app:titleCentered="true" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:visibility="gone">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/shimmer_news_row" />
-            <include layout="@layout/shimmer_news_row" />
-            <include layout="@layout/shimmer_news_row" />
-            <include layout="@layout/shimmer_news_row" />
-            <include layout="@layout/shimmer_news_row" />
-
-
-        </LinearLayout>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHome"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:itemCount="5"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/news_row" />
-
     <LinearLayout
-        android:id="@+id/linearRetry"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_gravity="center"
-        android:visibility="gone"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
         >
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvHomeError"
-            android:layout_width="wrap_content"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tlHome"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Error"
-            android:gravity="center"
-            />
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnHomeRetry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Retry"
-            />
+            app:tabMode="scrollable"
+            >
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpHome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </androidx.viewpager2.widget.ViewPager2>
     </LinearLayout>
+
+
 
 
 

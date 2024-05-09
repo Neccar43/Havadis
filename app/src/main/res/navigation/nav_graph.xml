@@ -20,7 +20,7 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment2_to_previewFragment"
+            android:id="@+id/action_homeFragment_to_previewFragment"
             app:destination="@id/previewFragment" />
     </fragment>
     <fragment
@@ -69,4 +69,13 @@
         android:name="com.novacodestudios.havadis.presentation.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/tabFragment"
+        android:name="com.novacodestudios.havadis.presentation.fragments.CategoryTabFragment"
+        android:label="fragment_tab"
+        tools:layout="@layout/fragment_tab" >
+        <action
+            android:id="@+id/action_tabFragment_to_previewFragment"
+            app:destination="@id/previewFragment" />
+    </fragment>
 </navigation>

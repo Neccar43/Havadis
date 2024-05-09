@@ -32,10 +32,14 @@ class HavadisApplication : Application() {
 
     @Inject
     lateinit var preferences: UserPreferences
+    private var isWorkManagerSetup = false
 
     override fun onCreate() {
         super.onCreate()
-        setupWorkManager()
+        if (!isWorkManagerSetup) {
+            setupWorkManager()
+            isWorkManagerSetup = true
+        }
 
     }
 
