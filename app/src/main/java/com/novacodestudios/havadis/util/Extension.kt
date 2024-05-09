@@ -11,12 +11,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
-import coil.request.ImageRequest
 import com.google.android.material.snackbar.Snackbar
 import com.novacodestudios.havadis.data.remote.dto.sourceDto.Source
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 fun Context.toast(message: String, length: Int = Toast.LENGTH_SHORT) {
     Toast.makeText(this, message, length).show()
@@ -72,3 +72,6 @@ fun ImageView.loadImageWithWifiPreference(
         load(url)
     }
 }
+
+fun String.capitalizeFirstLetter():String =
+    this.lowercase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }

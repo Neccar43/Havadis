@@ -14,6 +14,7 @@ enum class SearchIn {
         }
     }
 }
+
 enum class Category(val value: String) {
     BUSINESS("business"),
     ENTERTAINMENT("entertainment"),
@@ -23,6 +24,7 @@ enum class Category(val value: String) {
     SPORTS("sports"),
     TECHNOLOGY("technology"),
 }
+
 enum class Country(val countryCode: String) {
     ARGENTINA("ar"),
     AUSTRALIA("au"),
@@ -81,7 +83,7 @@ enum class Country(val countryCode: String) {
 
     companion object {
         fun fromCountryCode(code: String): Country? {
-            return values().find { it.countryCode == code }
+            return entries.find { it.countryCode == code }
         }
     }
 }
@@ -92,13 +94,17 @@ enum class Language(val code: String) {
     ENGLISH("en"),
     SPANISH("es"),
     FRENCH("fr"),
-    HEBREW("he"),
+    HEBREW("he"),//
     ITALIAN("it"),
-    DUTCH("nl"),
-    NORWEGIAN("no"),
-    PORTUGUESE("pt"),
+    DUTCH("nl"),//
+    NORWEGIAN("no"),//
+    PORTUGUESE("pt"),//
     RUSSIAN("ru"),
-    SWEDISH("sv"),
-    TURKISH_GERMAN("ud"),
-    CHINESE("zh")
+    SWEDISH("sv"),//
+    TURKISH_GERMAN("ud"),//
+    CHINESE("zh");//
+
+    companion object {
+        fun fromLanguageCode(code: String): Language? = entries.find { it.code == code }
+    }
 }
