@@ -17,11 +17,10 @@ import com.novacodestudios.havadis.util.NotiKitBuilder
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-@HiltWorker
-class NotificationWorker @AssistedInject constructor(
-    @Assisted appContext: Context,
-    @Assisted workerParams: WorkerParameters,
-    private val repository: NewsRepository,
+class NotificationWorker(
+     appContext: Context,
+     workerParams: WorkerParameters,
+    //private val repository: NewsRepository,
 ) : CoroutineWorker(appContext, workerParams) {
     companion object{
         private const val TAG="NotificationWorker"
