@@ -23,6 +23,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:visibility="visible"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         >
         <LinearLayout
@@ -40,7 +41,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/language_fill0_wght400_grad0_opsz24"
+                    android:src="@drawable/notifications_24dp_fill0_wght400_grad0_opsz24"
                     app:tint="@color/md_theme_onSurfaceVariant" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -68,7 +69,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/language_fill0_wght400_grad0_opsz24" />
+                    android:src="@drawable/dark_mode_24dp_fill0_wght400_grad0_opsz24"
+                    app:tint="@color/md_theme_onSurfaceVariant"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
@@ -94,7 +97,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/language_fill0_wght400_grad0_opsz24" />
+                    android:src="@drawable/image_24dp_fill0_wght400_grad0_opsz24"
+                    app:tint="@color/md_theme_onSurfaceVariant"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="0dp"
@@ -119,7 +124,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/language_fill0_wght400_grad0_opsz24" />
+                    android:src="@drawable/language_fill0_wght400_grad0_opsz24"
+                    app:tint="@color/md_theme_onSurfaceVariant"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -127,20 +134,19 @@
                     android:layout_weight="1"
                     android:text="Language"
                     android:textSize="16sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/menuLanguage"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <com.google.android.material.textview.MaterialTextView
+                    android:paddingVertical="8dp"
+                    android:id="@+id/tvLanguage"
+                    android:background="@drawable/rounded_filled_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2">
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:drawableEnd="@drawable/arrow_drop_down_down"
+                    />
 
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:text="English" />
-                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
 
             <LinearLayout
@@ -153,7 +159,9 @@
                     android:layout_marginEnd="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/language_fill0_wght400_grad0_opsz24" />
+                    android:src="@drawable/flag_24dp_fill0_wght400_grad0_opsz24"
+                    app:tint="@color/md_theme_onSurfaceVariant"
+                    />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
@@ -161,20 +169,19 @@
                     android:layout_weight="1"
                     android:text="Country"
                     android:textSize="16sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/menuCountry"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <com.google.android.material.textview.MaterialTextView
+                    android:paddingVertical="8dp"
+                    android:id="@+id/tvCountry"
+                    android:background="@drawable/rounded_filled_background"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="2">
+                    android:layout_weight="1"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:drawableEnd="@drawable/arrow_drop_down_down"
+                    />
 
-                    <AutoCompleteTextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="none"
-                        android:text="English" />
-                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
