@@ -10,6 +10,8 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.novacodestudios.havadis.domain.preferences.UserPreferences
+import com.novacodestudios.havadis.util.Country
+import com.novacodestudios.havadis.util.Language
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -23,6 +25,7 @@ class UserPreferencesImpl(
         const val DATA_STORE_NAME="settings"
         private val DARK_MODE_KEY = booleanPreferencesKey("dark_mode")
         private val LANGUAGE_KEY = stringPreferencesKey("language")
+        private val COUNTRY_KEY = stringPreferencesKey("country")
         private val IMAGES_WIFI_ONLY_KEY = booleanPreferencesKey("images_wifi_only")
         private val NOTIFICATION_KEY= booleanPreferencesKey("show_notification")
         private const val TAG="UserPreferences"
@@ -40,14 +43,27 @@ class UserPreferencesImpl(
         }
     }
 
-    override val getLanguage: Flow<String>
+    override val getLanguage: Flow<Language?>
         get() = context.dataStore.data.map {preferences->
-            preferences[LANGUAGE_KEY] ?: "tr"
+            val languageCode=preferences[LANGUAGE_KEY]
+            languageCode?.run { Language.fromLanguageCode(this) }
         }
 
-    override suspend fun setLanguage(language: String) {
+    override suspend fun setLanguage(language: Language) {
         context.dataStore.edit {preferences->
-            preferences[LANGUAGE_KEY]=language
+            preferences[LANGUAGE_KEY]=language.code
+        }
+    }
+
+    override val getCountry: Flow<Country?>
+        get() = context.dataStore.data.map {preferences->
+            val countryCode=preferences[COUNTRY_KEY]
+            countryCode?.run { Country.fromCountryCode(this) }
+        }
+
+    override suspend fun setCountry(country: Country) {
+        context.dataStore.edit {preferences->
+            preferences[COUNTRY_KEY]=country.countryCode
         }
     }
 
