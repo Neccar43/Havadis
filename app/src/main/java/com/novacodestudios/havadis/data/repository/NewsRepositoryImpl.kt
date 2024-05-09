@@ -64,12 +64,19 @@ class NewsRepositoryImpl @Inject constructor(
     override suspend fun getSources(
         category: Category?,
         languageCode: String?,
-        countryCode: Country?
+        country: Country?
     ): Resource<LiveData<List<Source>>> {
         return try {
-            val sources=newsApi.getSources(category?.name, languageCode, countryCode?.name).sources
+            val sources=newsApi
+                .getSources(category?.name, languageCode, country?.name)
+                .sources
+
+            Log.d(TAG, "getSources: sources $sources")
+            Log.d(TAG, "getSources: countries:${sources.map { it.country }.toSet()}")//countries:[us, au, no, it, sa, pk, gb, de, br, ca, es, ar, fr, in, is, ru, se, za, ie, nl, zh]
+            Log.d(TAG, "getSources: language:${sources.map { it.language }.toSet()}") //language:[en, no, it, ar, ud, de, pt, es, fr, he, ru, sv, nl, zh]
             Resource.success(liveData { emit(sources) })
         } catch (e: Exception) {
+            Log.e(TAG, "getSources: $e")
             Resource.error(e)
         }
     }

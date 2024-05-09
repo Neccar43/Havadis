@@ -20,9 +20,9 @@ interface NewsRepository {
     fun getTopHeadLinesWithPaging(options:TopHeadlinesOptions):LiveData<PagingData<Article>>
 
    suspend fun getSources(
-        category:Category?,
-        languageCode:String?,
-        countryCode: Country?,
+       category:Category?,
+       languageCode:String?,
+       country: Country?,
     ):Resource<LiveData<List<Source>>>
 
     suspend fun addArticleToBookmark(article: Article):Resource<LiveData<Boolean>>

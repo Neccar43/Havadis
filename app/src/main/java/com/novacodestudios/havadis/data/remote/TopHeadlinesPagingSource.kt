@@ -28,7 +28,7 @@ class TopHeadlinesPagingSource(
                     page = page,
                     countryCode = options.country?.countryCode,
                     category = options.category?.value,
-                    sources = options.sources,
+                    //sources = options.sources,
                     searchQuery = options.searchQuery,
                 )
             Log.d(TAG, "load: ${newsResponse.status}")

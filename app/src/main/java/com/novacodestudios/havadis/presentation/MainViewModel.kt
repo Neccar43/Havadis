@@ -41,19 +41,30 @@ class MainViewModel @Inject constructor(
 
     // TODO: Bu kısmı datastoredan çek
     val topHeadLineNews: LiveData<PagingData<Article>> =
-        repository.getTopHeadLinesWithPaging(
-            options = TopHeadlinesOptions(
-                page = 1,
+        repository
+            .getTopHeadLinesWithPaging(
+                options =
+                TopHeadlinesOptions(
+                    country = Country.TURKEY,
+                    category = null, // TODO: Kategori seçmeyi ekle
+                    sources = null,
+                    searchQuery = null, // TODO: Arama özelliği ekle
+                )
             )
-        ).cachedIn(viewModelScope)
+            .cachedIn(viewModelScope)
 
 
-    fun searchNews(query: String = "") = repository.searchNews(
-        options = NewsSearchOptions(
-            page = 1,
-            searchQuery = query,
+    fun searchNews(query: String = "") = repository
+        .searchNews(
+            options =
+            NewsSearchOptions(
+                sources = null,
+                domains =null ,
+                language = null,
+                searchQuery = query,
+            )
         )
-    ).cachedIn(viewModelScope)
+        .cachedIn(viewModelScope)
 
     suspend fun addArticleToBookmark(article: Article): Resource<LiveData<Boolean>> {
         return repository.addArticleToBookmark(article)
@@ -84,8 +95,10 @@ class MainViewModel @Inject constructor(
 
     suspend fun getSources(
         category: Category? = null,
+        //language:[en, no, it, ar, ud, de, pt, es, fr, he, ru, sv, nl, zh]
         language: String? = null,
-        country: Country? = null
+        //countries:[us, au, no, it, sa, pk, gb, de, br, ca, es, ar, fr, in, is, ru, se, za, ie, nl, zh]
+        country: Country? = null,
     ): Resource<LiveData<List<Source>>> {
         return repository.getSources(category, language, country)
     }
