@@ -36,6 +36,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures{
+        viewBinding=true
+    }
 }
 
 dependencies {
@@ -46,6 +50,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
@@ -70,6 +75,7 @@ dependencies {
     annotationProcessor (libs.androidx.room.room.compiler)
     ksp (libs.androidx.room.room.compiler)
     implementation (libs.androidx.room.ktx)
+    implementation(libs.androidx.room.paging)
 
     implementation(libs.coil)
 
@@ -91,6 +97,13 @@ dependencies {
     implementation (libs.kotlinx.coroutines.play.services)
 
     implementation(libs.androidx.paging.runtime)
+
+    implementation(libs.shimmer)
+
+    //Retrofit testi için
+    testImplementation(libs.mockwebserver)
+
+    testImplementation(libs.kotlinx.coroutines.test)
 
 
 }

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="16dp"
+    >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivNewsRow"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Large"
+        android:background="#C2C2C2"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvRowTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C2C2C2"
+            android:textSize="16sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:lineSpacingExtra="4dp"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start|center_vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvRowSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WebProNews"
+                android:background="#C2C2C2"
+                android:textSize="12sp"
+                android:textColor="#C2C2C2"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvRowPublishDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2024-04-30T19:52:38Z"
+                android:background="#C2C2C2"
+                android:textSize="12sp"
+                android:textColor="#C2C2C2"
+                android:layout_marginStart="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
