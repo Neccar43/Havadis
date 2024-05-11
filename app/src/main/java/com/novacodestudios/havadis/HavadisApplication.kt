@@ -21,6 +21,7 @@ import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 import androidx.work.WorkInfo.State
+import kotlinx.coroutines.Job
 
 @HiltAndroidApp
 class HavadisApplication : Application() {
@@ -32,14 +33,10 @@ class HavadisApplication : Application() {
 
     @Inject
     lateinit var preferences: UserPreferences
-    private var isWorkManagerSetup = false
 
     override fun onCreate() {
         super.onCreate()
-        if (!isWorkManagerSetup) {
-            setupWorkManager()
-            isWorkManagerSetup = true
-        }
+        setupWorkManager()
 
     }
 
@@ -48,9 +45,10 @@ class HavadisApplication : Application() {
         applicationScope.cancel("onLowMemory() called by system")
         applicationScope = MainScope()
     }
-
+    private var job:Job?=null
     private fun setupWorkManager() {
-        applicationScope.launch {
+        job?.cancel()
+        job=applicationScope.launch {
             preferences.getShowNotification.collectLatest { isShowNotificationEnable ->
                 Log.d(TAG, "setupWorkManager: isShowNotificationEnable:$isShowNotificationEnable")
                 if (isShowNotificationEnable) {

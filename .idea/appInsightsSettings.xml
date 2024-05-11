@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.novacodestudios.havadis" />
+                  <option name="mobileSdkAppId" value="1:87253520432:android:2e8904d7173484e8415df5" />
+                  <option name="projectId" value="havadis-a3d9b" />
+                  <option name="projectNumber" value="87253520432" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
