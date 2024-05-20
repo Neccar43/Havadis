@@ -4,12 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import androidx.paging.liveData
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.ktx.messaging
 import com.novacodestudios.havadis.data.remote.dto.Article
 import com.novacodestudios.havadis.data.remote.dto.sourceDto.Source
 import com.novacodestudios.havadis.domain.model.NewsSearchOptions
@@ -24,6 +27,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 @HiltViewModel
@@ -41,6 +45,12 @@ class MainViewModel @Inject constructor(
         get() = _searchNews
 
 
+    init {
+        viewModelScope.launch {
+            Firebase.messaging.subscribeToTopic("news").await()
+
+        }
+    }
 
 
      fun getTopHeadlineNews(

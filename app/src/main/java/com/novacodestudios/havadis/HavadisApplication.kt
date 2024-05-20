@@ -36,7 +36,7 @@ class HavadisApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        setupWorkManager()
+        //setupWorkManager()
 
     }
 
@@ -45,7 +45,7 @@ class HavadisApplication : Application() {
         applicationScope.cancel("onLowMemory() called by system")
         applicationScope = MainScope()
     }
-    private var job:Job?=null
+  /*  private var job:Job?=null
     private fun setupWorkManager() {
         job?.cancel()
         job=applicationScope.launch {
@@ -66,6 +66,6 @@ class HavadisApplication : Application() {
                 }
             }
         }
-    }
+    }*/
 
 }
